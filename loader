@@ -1,0 +1,70 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UIGradient = Instance.new("UIGradient")
+local textlabel = Instance.new("TextLabel")
+local UICorner = Instance.new("UICorner")
+local UIGradient_2 = Instance.new("UIGradient")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.DisplayOrder = 999999999
+ScreenGui.ResetOnSpawn = false
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderSizePixel = 2
+Frame.Position = UDim2.new(0.65150404, 0, 0.508939207, 0)
+Frame.Size = UDim2.new(0, 215, 0, 59)
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(69, 140, 255)), ColorSequenceKeypoint.new(0.34, Color3.fromRGB(35, 28, 255)), ColorSequenceKeypoint.new(0.51, Color3.fromRGB(109, 65, 255)), ColorSequenceKeypoint.new(0.79, Color3.fromRGB(29, 82, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(69, 140, 255))}
+UIGradient.Parent = Frame
+
+textlabel.Name = "textlabel"
+textlabel.Parent = Frame
+textlabel.Active = true
+textlabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textlabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+textlabel.Size = UDim2.new(0, 215, 0, 58)
+textlabel.Font = Enum.Font.SourceSans
+textlabel.Text = "0 Dw"
+textlabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+textlabel.TextSize = 23.000
+textlabel.TextWrapped = true
+
+UICorner.CornerRadius = UDim.new(0, 10)
+UICorner.Parent = textlabel
+
+UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(69, 140, 255)), ColorSequenceKeypoint.new(0.34, Color3.fromRGB(35, 28, 255)), ColorSequenceKeypoint.new(0.51, Color3.fromRGB(109, 65, 255)), ColorSequenceKeypoint.new(0.79, Color3.fromRGB(29, 82, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(69, 140, 255))}
+UIGradient_2.Parent = textlabel
+
+-- Scripts:
+
+local function XVYMLY_fake_script() -- ScreenGui.LocalScript 
+	local script = Instance.new('LocalScript', ScreenGui)
+
+	frame = script.Parent.Frame
+	frame.Draggable = true
+	frame.Active = true
+	frame.Selectable = true
+end
+coroutine.wrap(XVYMLY_fake_script)()
+
+repeat
+	wait(.1)
+	local num = 0
+	for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+    if v.Name == "Double Weight" then
+        num += 1
+    end
+end
+
+if num == 0 then
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if v.Name == "Double Weight" then
+        num += 1
+    end
+end
+end
+	textlabel.Text = num.."DW"
+until num == 9999999999999
